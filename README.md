@@ -72,8 +72,3 @@ This job is scheduled to run every 15 minutes and creates one record for each 
 A Cognos report was created with exception highlighting on the status field so that any jobs that failed would stick out.  In our case, we scheduled this job to run at 8:00 am each morning after all the morning scheduled tasks have run.  You could also create the same report using the excel file or the OXI MS XML injector from our open source toolbox.
 
 ![ETL Job Report](https://i1.wp.com/assignittous.com/wp-content/uploads/2018/01/ps_job_run_report.png?resize=1024%2C323&ssl=1)
-
-<<<<<<< HEAD
-
-=======
->>>>>>> da0aecd26556ff94065e069d4ac64fccad29cd39
