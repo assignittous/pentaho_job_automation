@@ -1,13 +1,13 @@
 # Pentaho Job Schedule Automation
-##Overview
+## Overview
 
 What this ETL tracker is:  It's a high-level tool that monitors all the jobs run against your task scheduling tool and notifies the administrator when jobs don't run on their expected schedule.
 
 
-##How it Works
+## How it Works
 There are 4 components used to track the jobs:
 
-####1. Schedule the Pentaho job in the Microsoft Task Scheduler or cron job if you're using a Unix based OS.
+#### 1. Schedule the Pentaho job in the Microsoft Task Scheduler or cron job if you're using a Unix based OS.
 
 The scheduled job will call a batch script that runs a Pentaho job.
 
@@ -22,7 +22,7 @@ The script that runs the Pentaho Job.  Basic logging is written to the Master_J
 	kitchen.bat /rep:dw_repo_f /file:C:\Cognos\ETL\Pentaho_Repo\Backup_File_Mgmt\Master_Job.kjb /level:Basic > C:\Cognos\ETL\logs\Master_Job.log
 
 
-####2. Add the ETL Job Log step to the end of each job flow. 
+#### 2. Add the ETL Job Log step to the end of each job flow. 
 
 This step will add a timestamp for each run to the target ETL_Job_Log table.
 
@@ -41,7 +41,7 @@ This step will add a timestamp for each run to the target ETL_Job_Log table.
 ![ETL Job Log Output](https://i1.wp.com/assignittous.com/wp-content/uploads/2018/01/ps_etl_log_output.png?resize=390%2C288&ssl=1)
 
 
-####3. Run the Schedule_Job_Check to record the daily schedule info for each job.
+#### 3. Run the Schedule_Job_Check to record the daily schedule info for each job.
 
 This job is scheduled to run every 15 minutes and creates one record for each job showing the last time it was run.  The output targets an Excel file or to a data warehouse table that we can report on.  In our case, we do both.
 
@@ -67,7 +67,7 @@ This job is scheduled to run every 15 minutes and creates one record for each 
 
 ![ETL Schedule Job Output](https://i2.wp.com/assignittous.com/wp-content/uploads/2018/01/scheduler_output.png?resize=1411%2C175&ssl=1)
 
-####4. Email/View the ETL Job Run Status report.
+#### 4. Email/View the ETL Job Run Status report.
 
 A Cognos report was created with exception highlighting on the status field so that any jobs that failed would stick out.  In our case, we scheduled this job to run at 8:00 am each morning after all the morning scheduled tasks have run.  You could also create the same report using the excel file or the OXI MS XML injector from our open source toolbox.
 
